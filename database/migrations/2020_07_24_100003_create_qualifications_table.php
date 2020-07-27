@@ -15,7 +15,7 @@ class CreateQualificationsTable extends Migration
     {
         Schema::create('qualifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('organization_name',150);
+            $table->string('organization_name', 150);
             $table->string('certificate_name');
             $table->string('certificate_GPA');
             $table->dateTime('achievement_date');

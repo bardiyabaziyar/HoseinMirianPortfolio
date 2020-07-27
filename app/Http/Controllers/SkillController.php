@@ -11,9 +11,10 @@ class SkillController extends Controller
 {
     public function index()
     {
-        $skills=skills::with('skill_types')->get();
+        $skills = skills::with('skill_types')->get();
         return SkillResource::collection($skills);
     }
+
     public function single(skills $skills)
     {
         return new SkillResource($skills);

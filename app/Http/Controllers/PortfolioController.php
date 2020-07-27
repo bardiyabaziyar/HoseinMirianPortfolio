@@ -11,7 +11,7 @@ class PortfolioController extends Controller
 {
     public function index()
     {
-        $portfolios=portfolio::with('skills','portfolio_type')->get();
+        $portfolios = portfolio::with('skills', 'portfolio_type')->get();
 //        return $portfolios;
         return PortfolioResource::collection($portfolios);
     }
