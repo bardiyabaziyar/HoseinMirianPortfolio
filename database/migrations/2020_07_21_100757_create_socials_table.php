@@ -15,8 +15,8 @@ class CreateSocialsTable extends Migration
     {
         Schema::create('socials', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',20);
-            $table->string('link',100);
+            $table->string('name', 20);
+            $table->string('link', 100);
             $table->string('logo');
         });
     }

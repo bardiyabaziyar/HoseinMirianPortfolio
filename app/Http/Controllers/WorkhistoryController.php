@@ -10,7 +10,7 @@ class WorkhistoryController extends Controller
 {
     public function index()
     {
-        $works=workhistory::all();
+        $works = workhistory::all();
         return WorkhistoryResource::collection($works);
     }
 

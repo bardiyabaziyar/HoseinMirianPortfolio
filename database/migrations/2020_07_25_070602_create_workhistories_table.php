@@ -15,7 +15,7 @@ class CreateWorkhistoriesTable extends Migration
     {
         Schema::create('workhistories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('organization_name',150);
+            $table->string('organization_name', 150);
             $table->dateTime('from');
             $table->dateTime('to');
             $table->string('role');

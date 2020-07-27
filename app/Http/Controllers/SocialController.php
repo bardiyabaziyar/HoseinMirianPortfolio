@@ -10,10 +10,12 @@ class SocialController extends Controller
 {
     public function index()
     {
-        $social=social::all();
+        $social = social::all();
         return SocialResource::collection($social);
     }
-    public function single(social $social){
+
+    public function single(social $social)
+    {
         return new SocialResource($social);
     }
 }

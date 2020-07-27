@@ -10,10 +10,12 @@ class QualificationController extends Controller
 {
     public function index()
     {
-        $qualifications=qualification::all();
+        $qualifications = qualification::all();
         return QualificationResource::collection($qualifications);
     }
-    public function single(qualification $qualification){
+
+    public function single(qualification $qualification)
+    {
         return new QualificationResource($qualification);
     }
 }

@@ -18,7 +18,7 @@ class CreatePortfoliosTable extends Migration
             $table->integer('portfolio_types_id')->unsigned();
             $table->foreign('portfolio_types_id')->references('id')->on('portfolio_types')->onDelete('cascade');
             $table->text('description');
-            $table->string('organization_name',150);
+            $table->string('organization_name', 150);
             $table->string('project_link');
             $table->string('project_image');
         });
@@ -28,7 +28,7 @@ class CreatePortfoliosTable extends Migration
             $table->foreign('portfolio_id')->references('id')->on('portfolios')->onDelete('cascade');
             $table->integer('skills_id')->unsigned();
             $table->foreign('skills_id')->references('id')->on('skills')->onDelete('cascade');
-            $table->primary(['portfolio_id','skills_id']);
+            $table->primary(['portfolio_id', 'skills_id']);
         });
     }
 
