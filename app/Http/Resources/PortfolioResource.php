@@ -28,6 +28,7 @@ class PortfolioResource extends Resource
           'Organization'=>$this->organization_name,
           'Link Address'=>$this->project_link,
           'project type'=>$this->portfolio_type->type,
+            'portfolioImage'=>$this->project_image,
           'skills'=>$this->fetch_skills($this)
 
         ];
