@@ -15,7 +15,9 @@ class CreateSkillsTable extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('skill_name',50);
+            $table->integer('portfolio_types_id')->unsigned();
+            $table->foreign('portfolio_types_id')->references('id')->on('portfolio_types')->onDelete('cascade');
+            $table->string('skill_title', 100);
             $table->text('description');
             $table->string('skill_image');
             $table->string('skill_level');

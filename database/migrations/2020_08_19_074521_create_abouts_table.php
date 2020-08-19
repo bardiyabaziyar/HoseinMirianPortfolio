@@ -15,14 +15,18 @@ class CreateAboutsTable extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('social_id')->unsigned();
-            $table->foreign('social_id')->references('id')->on('social')->OnDelete('cascade');
-            $table->integer('skill_id')->unsigned();
-            $table->foreign('skill_id')->references('id')->on('skills')->OnDelete('cascade');
-            $table->integer('qualification_id')->unsigned();
-            $table->foreign('qualification_id')->references('id')->on('qualification')->OnDelete('cascade');
-            $table->string('personnel_image');
-            $table->text('description');
+            $table->string('name', 50);
+            $table->text('biography');
+            $table->string('cv_link');
+            $table->string('age', 3);
+            $table->text('full_summary');
+            $table->string('address');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('nationality', 30);
+            $table->string('degree');
+            $table->string('remote_availability');
+            $table->string('years_experience', 2);
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQualificationsTable extends Migration
+class CreatePortfolioTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateQualificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('qualifications', function (Blueprint $table) {
+        Schema::create('portfolio_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Organization_name',150);
-            $table->string('Certificate_name');
-            $table->string('Certificate_GPA');
-            $table->string('Achievement_year');
+            $table->string('type');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateQualificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qualifications');
+        Schema::dropIfExists('portfolio_types');
     }
 }

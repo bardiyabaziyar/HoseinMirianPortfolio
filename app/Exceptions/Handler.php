@@ -3,7 +3,10 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -31,7 +34,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
      */
     public function report(Exception $exception)
@@ -42,12 +45,31 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $exception
+     * @return JsonResponse
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof ModelNotFoundException || $exception instanceof NotFoundHttpException) {
+            return $this->NotFoundExceptionMessage($request, $exception);
+        }
         return parent::render($request, $exception);
+    }
+
+    /**
+     * @param $request
+     * @param Exception $exception
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function NotFoundExceptionMessage($request, Exception $exception)
+    {
+        return $request->expectsJson() ?
+            new JsonResponse(
+                ['data' => [
+                    'Message' => 'Record Not Found',
+                    'Status Code' => 404]
+                ]) :
+            parent::render($request, $exception);
     }
 }

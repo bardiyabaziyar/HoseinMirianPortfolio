@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([], function () {
+    Route::get('/portfolios', 'PortfolioController@index');
+    Route::get('/portfolios/{portfolio}', 'PortfolioController@single');
+    Route::get('/skills', 'SkillController@index');
+    Route::get('/skills/{skills}', 'SkillController@single');
+    Route::get('/workhistory', 'WorkhistoryController@index');
+    Route::get('/workhistory/{workhistory}', 'WorkhistoryController@single');
+    Route::get('/social', 'SocialController@index');
+    Route::get('/social/{social}', 'SocialController@single');
+    Route::get('/qualifications', 'QualificationController@index');
+    Route::get('/qualifications/{qualification}', 'QualificationController@single');
+
 });
