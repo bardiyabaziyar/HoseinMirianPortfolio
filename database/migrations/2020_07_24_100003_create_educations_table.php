@@ -13,12 +13,13 @@ class CreateQualificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('qualifications', function (Blueprint $table) {
+        Schema::create('educations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('organization_name', 150);
             $table->string('certificate_name');
+            $table->string('organization_name', 150);
+            $table->dateTime('from');
+            $table->dateTime('to');
             $table->string('certificate_GPA');
-            $table->dateTime('achievement_date');
         });
     }
 
