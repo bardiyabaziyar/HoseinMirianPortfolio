@@ -17,10 +17,13 @@ class CreatePortfoliosTable extends Migration
             $table->increments('id');
             $table->integer('portfolio_types_id')->unsigned();
             $table->foreign('portfolio_types_id')->references('id')->on('portfolio_types')->onDelete('cascade');
-            $table->text('description');
-            $table->string('organization_name', 150);
-            $table->string('project_link');
+            $table->string('title');
+            $table->string('organization', 150);
+            $table->string('location', 150);
+            $table->string('source_code');
+            $table->string('website');
             $table->string('project_image');
+            $table->string('role');
         });
 
         Schema::create('portfolio_skills', function (Blueprint $table) {
@@ -40,8 +43,6 @@ class CreatePortfoliosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('portfolios');
-        Schema::dropIfExists('portfolios_skills');
-        Schema::dropIfExists('portfolio_skill');
         Schema::dropIfExists('portfolio_skills');
     }
 }

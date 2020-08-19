@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorkhistoriesTable extends Migration
+class CreateResumesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateWorkhistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('workhistories', function (Blueprint $table) {
+        Schema::create('resumes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('organization_name', 150);
+            $table->string('organization', 150);
+            $table->string('location', 150);
             $table->dateTime('from');
             $table->dateTime('to');
             $table->string('role');
-            $table->text('description');
+            $table->string('website');
         });
     }
 
