@@ -98,10 +98,9 @@ export default {
   font-weight: 500;
 }
 
-.vue-typer {
+h1 .vue-typer {
   font-family: monospace;
   background-color: white;
-  opacity: 70%;
 }
 
 @-webkit-keyframes up-down {
