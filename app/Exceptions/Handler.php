@@ -67,8 +67,8 @@ class Handler extends ExceptionHandler
         return $request->expectsJson() ?
             new JsonResponse(
                 ['data' => [
-                    'Message' => 'Record Not Found',
-                    'Status Code' => 404]
+                    'message' => 'Record Not Found',
+                    'status_code' => 404]
                 ]) :
             parent::render($request, $exception);
     }
