@@ -8,7 +8,7 @@
             <span class="pt-5">My Resume</span>
             <h2 class="pt-5">My Resume</h2>
           </div>
-          <a :href="about.cvLink" target="_blank">
+          <a :href="about.cv_link" target="_blank">
             <button
               style="width: 200px"
               type="button"
@@ -111,7 +111,7 @@ export default {
         address: "Oxford,United Kingdom",
         email: "hosein.mirian@gmail.com",
         phone: "+44 7376799008",
-        cvLink: "http://hoseinmirian.com/cv/cv-mirian.pdf"
+        cv_link: "http://hoseinmirian.com/assets/cv/cv-mirian.pdf"
       },
       education: [
         {

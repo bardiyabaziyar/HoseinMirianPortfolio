@@ -1,17 +1,21 @@
-import './bootstrap'
+import "./bootstrap";
 import router from "./router";
 import store from "./store";
+import Vue from "vue";
+import Header from "./components/Header";
+import RESTClient from "./api/RESTClient";
 
-import Header from './components/Header'
+Vue.component("MyHeader", Header);
+let restClient = new RESTClient();
 
-Vue.component('MyHeader', Header);
-
-
-const app = new Vue({
-    el: '#app',
-    router,
-    store,
-    created(){
-        // console.log(window.Laravel);
-    },
+new Vue({
+  el: "#app",
+  router,
+  store,
+  async beforeMount() {
+    // console.log(window.Laravel);
+    /* call Api */
+    let data = await restClient.fetchAll();
+    data ? console.log(data.data) : console.log(data.data.message);
+  }
 });
