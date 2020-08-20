@@ -1,17 +1,16 @@
-import './bootstrap'
+import "./bootstrap";
 import router from "./router";
 import store from "./store";
 
-import Header from './components/Header'
+import Header from "./components/Header";
 
-Vue.component('MyHeader', Header);
-
+Vue.component("MyHeader", Header);
 
 const app = new Vue({
-    el: '#app',
-    router,
-    store,
-    created(){
-        // console.log(window.Laravel);
-    },
+  el: "#app",
+  router,
+  store,
+  created() {
+    // console.log(window.Laravel);
+  }
 });
