@@ -10,8 +10,8 @@ class SocialController extends Controller
 {
     public function index()
     {
-        $social = social::all();
-        return SocialResource::collection($social);
+        $socials = social::all();
+        return ['data' => ['socials_list' => SocialResource::collection($socials)]];
     }
 
     public function single(social $social)
