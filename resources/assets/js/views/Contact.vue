@@ -21,7 +21,7 @@
                       <a
                         :href="socialItem.link"
                         target="_blank"
-                        v-for="(socialItem, index) in socialList"
+                        v-for="(socialItem, index) in socials.socials_list"
                         :key="index"
                       >
                         <component
@@ -131,6 +131,7 @@ import Facebook from "mdi-vue/Facebook";
 import ShareVariant from "mdi-vue/ShareVariant";
 import Phone from "mdi-vue/Phone";
 import Gmail from "mdi-vue/Gmail";
+import { mapState } from "vuex";
 
 export default {
   name: "Contact",
@@ -143,22 +144,8 @@ export default {
     Phone,
     Gmail
   },
-  data: () => {
-    return {
-      about: {
-        email: "hosein.mirian@gmail.com",
-        phone: "+44 7376799008",
-        address: "Oxford,United Kingdom",
-        contactDescription:
-          "If you have any inquiry about kicking off a project, estimating price, business plan, and more, Please feel free to contact me through email social media "
-      },
-      socialList: [
-        { icon: "Github", link: "https://www.github.com/hoseinmirian" },
-        { icon: "Gitlab", link: "https://www.gitlab.com/hoseinmirian" },
-        { icon: "Linkedin", link: "https://www.linkedin.com/hoseinmirian" },
-        { icon: "Facebook", link: "https://www.facebook.com/hoseinmirian" }
-      ]
-    };
+  computed: {
+    ...mapState(["about", "socials"])
   },
   beforeDestroy() {
     this.scrollToTop();

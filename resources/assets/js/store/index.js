@@ -14,19 +14,20 @@ export default new Vuex.Store({
     services: {},
     education: [],
     portfolio: [],
-    resume: []
+    resume: [],
+    currentPortfolio: []
   },
   mutations: {
     setParameters(state, data) {
       Object.keys(data).forEach(key => {
         state[key] = data[key];
       });
+      state.currentPortfolio = [];
     }
   },
   actions: {
     async fetchParameters(state, data) {
       this.commit("setParameters", data.data);
-      console.log(data.data)
     }
   },
   modules: {}
