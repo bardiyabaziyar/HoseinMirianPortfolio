@@ -5,9 +5,13 @@
       <div class="section-title">
         <span class="pt-5">My Skills</span>
         <h2 class="pt-5">My Skills</h2>
-        <p>{{ skillsDescription }}</p>
+        <p>{{ description.skills_description }}</p>
       </div>
-      <div class="skills-content" v-for="(skill, index) in skills" :key="index">
+      <div
+        class="skills-content"
+        v-for="(skill, index) in skills.skills_list"
+        :key="index"
+      >
         <div class="progress">
           <span class="skill"
             >{{ skill.title }} <i class="val">{{ skill.level }}%</i></span
@@ -29,25 +33,15 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Skills",
+  computed: {
+    ...mapState(["skills", "description"])
+  },
   data: () => {
-    return {
-      percentString: "",
-      skills: [
-        { title: "JAVASCRIPT", level: 90 },
-        { title: "HTML", level: 100 },
-        { title: "CSS", level: 100 },
-        { title: "VUE", level: 100 },
-        { title: "VUEX", level: 100 },
-        { title: "VUETIFY", level: 95 },
-        { title: "TESTING", level: 92 },
-        { title: "ADOBE XD", level: 75 },
-        { title: "ADOBE PHOTOSHOP", level: 90 }
-      ],
-      skillsDescription:
-        "My skills are numerous, from graphic design using photoshop and illustrator, sketching, mocking and UI/UX design by adobe XD to implementing the idea into a real professional output using my front-end and javascript skills such as vue, vuex, vuetify, etc. I also have a long experience of developing Android apps using Java as well as developing cross - platform apps using React Native.Besides, I have been very exposed to back - end development as well due to my experience to develop using PHP and familiarity with both REST and GraphQL API(s)."
-    };
+    return { percentString: "" };
   },
   mounted() {
     setTimeout(this.playAnimation, 3500);

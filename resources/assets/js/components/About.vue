@@ -5,7 +5,7 @@
         <div class="section-title">
           <span>About Me</span>
           <h2>About Me</h2>
-          <p>{{ about.fullSummary }}</p>
+          <p>{{ about.full_summary }}</p>
         </div>
         <div class="row">
           <div class="col-lg-6  ">
@@ -42,12 +42,12 @@
               <li class="arrow-holder mb-1">
                 <ChevronRight class="chevron" />
                 <strong style="color:black;">Freelance:</strong
-                >{{ about.remoteAvailability }}
+                >{{ about.remote_availability }}
               </li>
               <li class="arrow-holder mb-1">
                 <ChevronRight class="chevron" />
                 <strong style="color:black;">Years of experience:</strong
-                >{{ about.yearsOfExperience }}
+                >{{ about.years_experience }}
               </li>
             </ul>
           </div>
@@ -59,31 +59,15 @@
 
 <script>
 import ChevronRight from "mdi-vue/ChevronRight";
+import { mapState } from "vuex";
 
 export default {
   name: "About",
   components: {
     ChevronRight
   },
-  data: () => {
-    return {
-      about: {
-        name: "Hossein Mirian",
-        age: "32",
-        fullSummary:
-          "            I am current University of Oxford Front-end developer/Researcher. I\n" +
-          "            have been working as software developer the past 12 years.I\n" +
-          "            graduated from Birmingham City University by achieving MSc Advanced\n" +
-          "            Computer Science degree.\n",
-        address: "Oxford,United Kingdom",
-        email: "hosein.mirian@gmail.com",
-        phone: "+44 7376799008",
-        nationality: "Iran",
-        degree: "Msc Advanced Computer Science",
-        remoteAvailability: "Available",
-        yearsOfExperience: "12"
-      }
-    };
+  computed: {
+    ...mapState(["about"])
   }
 };
 </script>

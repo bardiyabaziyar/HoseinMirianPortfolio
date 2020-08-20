@@ -14,8 +14,10 @@ new Vue({
   store,
   async beforeMount() {
     // console.log(window.Laravel);
-    /* call Api */
+    /* Calling Api */
     let data = await restClient.fetchAll();
-    data ? console.log(data.data) : console.log(data.data.message);
+    /* Storing data in store */
+    await store.dispatch("fetchParameters", data);
+    // data ? console.log(data.data) : console.log(data.data.message);
   }
 });

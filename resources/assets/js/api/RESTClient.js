@@ -21,7 +21,7 @@ class RESTClient {
   async fetchAll() {
     const request = {
       method: "get",
-      baseURL: this.baseURL + "portfolios",
+      baseURL: this.baseURL + "all",
       headers: this.headers
     };
     let response = await this.executeQuery(request);
