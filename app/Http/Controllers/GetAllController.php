@@ -15,7 +15,7 @@ use App\Http\Resources\HeroResource;
 use App\Http\Resources\PortfolioResource;
 use App\Http\Resources\ResumeResource;
 use App\Http\Resources\ServicesResource;
-use App\Http\Resources\SkilResource;
+use App\Http\Resources\SkillResource;
 use App\Http\Resources\SocialResource;
 use App\portfolio;
 use App\resume;
@@ -42,7 +42,7 @@ class GetAllController extends Controller
            'data'=>[
                'about'=> new AboutResource($about),
                'backgrounds'=>new BackgroundResource($backgrounds),
-               'skills'=>['skills_list'=>SkilResource::collection($skills)],
+               'skills'=>['skills_list'=>SkillResource::collection($skills)],
                'hero'=>new HeroResource($hero),
                'services'=>['services_list'=>ServicesResource::collection($services)],
                'socials'=>['socials_list'=>SocialResource::collection($socials)],

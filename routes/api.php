@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::group([], function () {
-    Route::get('/getall', 'GetAllController@get');
+    Route::get('/all', 'GetAllController@get');
     Route::get('/hero', 'HeroController@index');
     Route::get('/about', 'AboutController@index');
     Route::get('/backgrounds', 'BackgroundController@index');

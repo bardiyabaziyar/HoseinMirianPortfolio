@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\SkilResource as SkillResource;
+use App\Http\Resources\SkillResource;
 use App\skills;
 use Illuminate\Http\Request;
 

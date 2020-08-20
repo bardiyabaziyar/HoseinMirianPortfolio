@@ -34,7 +34,7 @@ class PortfolioResource extends Resource
             'role' => $this->role,
             'website' => $this->website,
             'source_code' => $this->source_code,
-            'techs' => $this->merge_skills(SkilResource::collection($this->skills))
+            'techs' => $this->merge_skills(SkillResource::collection($this->skills))
 
         ];
     }
