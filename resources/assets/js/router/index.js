@@ -20,14 +20,14 @@ const routes = [
     component: Home
   },
   {
+    path: "/about",
+    name: "About",
+    redirect: Home
+  },
+  {
     path: "/resume",
     name: "Resume",
     component: Resume
-  },
-  {
-    path: "/about",
-    name: "About",
-    redirect:Resume
   },
   {
     path: "/portfolio",
