@@ -3,9 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
-use App\portfolio;
+use App\Http\Resources\BulletpointResource;
 
-class PortfolioResource extends Resource
+class ResumeResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -13,30 +13,26 @@ class PortfolioResource extends Resource
      * @param  \Illuminate\Http\Request $request
      * @return array
      */
-    private function merge_skills($skills)
+    private function merge_bulletPoints($bullets)
     {
         $merge = [];
-        foreach ($skills as $skill) {
-            $merge[] .= $skill->skill_title;
+        foreach ($bullets as $bullet) {
+            $merge[] .= $bullet->description;
         }
         return $merge;
     }
 
     public function toArray($request)
     {
-
         return [
-            'title' => $this->title,
-            'type' => $this->portfolio_type->type,
-            'img' => $this->project_image,
             'organization' => $this->organization,
             'location' => $this->location,
+            'from' => $this->from,
+            'to' => $this->to,
             'role' => $this->role,
             'website' => $this->website,
-            'source_code' => $this->source_code,
-            'techs' => $this->merge_skills(SkilResource::collection($this->skills))
+            'bullet_points' => $this->merge_bulletPoints(BulletpointResource::collection($this->bulletpoints))
 
         ];
     }
-
 }

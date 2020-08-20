@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class SocialResource extends Resource
+class BulletpointResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,7 @@ class SocialResource extends Resource
     public function toArray($request)
     {
         return [
-            'icon' => $this->icon,
-            'link' => $this->link
+            'description' => $this->description
         ];
     }
 }

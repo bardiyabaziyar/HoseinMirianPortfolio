@@ -11,8 +11,8 @@ class SkillController extends Controller
 {
     public function index()
     {
-        $skills = skills::with('skill_types')->get();
-        return SkillResource::collection($skills);
+        $skills = skills::all();
+        return ['data' => ['skills_list' => SkillResource::collection($skills)]];
     }
 
     public function single(skills $skills)

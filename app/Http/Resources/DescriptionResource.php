@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class SocialResource extends Resource
+class DescriptionResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,9 @@ class SocialResource extends Resource
     public function toArray($request)
     {
         return [
-            'icon' => $this->icon,
-            'link' => $this->link
+            'skills_description' => $this->skills_description,
+            'hero_description' => $this->hero_description,
+            'services_description' => $this->services_description
         ];
     }
 }
