@@ -17,7 +17,7 @@
     <!--Paralex -->
     <div id="parallax-holder">
       <parallax :parallax="true" :fixed="true">
-        <img src="../assets/paralex.jpg" />
+        <img :src="backgrounds.parallax"  alt="hosein mirian web developer"/>
       </parallax>
     </div>
     <!--ٍEnd of Paralex -->
@@ -49,6 +49,14 @@ export default {
     MyFooter,
     Skills,
     Parallax
+  },
+  data: () => {
+    return {
+      backgrounds: {
+        parallax:
+          "http://hoseinmirian.com/assets/images/backgrounds/parallax.jpg"
+      }
+    };
   },
   beforeDestroy() {
     this.scrollToTop();

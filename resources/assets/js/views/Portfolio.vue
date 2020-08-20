@@ -99,7 +99,7 @@ export default {
         center: true,
         fluidGrow: true,
         blank: true,
-        blankSrc: `${require("../assets/image-placeholder.gif")}`,
+        blankSrc: `${require("../assets/images/image-placeholder.gif")}`,
         width: 600,
         height: 400,
         class: "my-3"

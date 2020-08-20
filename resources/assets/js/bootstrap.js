@@ -1,16 +1,17 @@
 import Vue from "vue";
 import axios from "axios";
 import VueRouter from "vue-router";
-window.Vue = Vue;
-window.axios = axios;
-
-Vue.config.devtools = true;
-
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { applicationMixin } from "./mixins/applicationMixin";
+
+window.Vue = Vue;
+window.axios = axios;
+
+Vue.config.devtools = true;
+Vue.config.productionTip = false;
 
 // Install BootstrapVue
 Vue.use(BootstrapVue);

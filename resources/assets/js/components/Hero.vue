@@ -1,5 +1,10 @@
 <template>
-  <section id="hero">
+  <section
+    id="hero"
+    :style="{
+      background: `url(${backgrounds.hero}) repeat scroll center center/cover`
+    }"
+  >
     <div class="container">
       <div class="hero-content">
         <h1>
@@ -41,7 +46,10 @@ export default {
         "I'm an expert Front-End developer",
         "I'm a UI/UX designer",
         "I'm a software tester"
-      ]
+      ],
+      backgrounds: {
+        hero: "http://hoseinmirian.com/assets/images/backgrounds/hero.jpg"
+      }
     };
   }
 };
@@ -49,7 +57,6 @@ export default {
 
 <style scoped>
 #hero {
-  background: url("../assets/home-bg.jpg") repeat scroll center center/cover;
   height: 100vh;
   width: 100%;
 }
