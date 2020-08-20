@@ -1,10 +1,10 @@
 import Vue from "vue";
 import axios from "axios";
-import VueRouter from 'vue-router'
+import VueRouter from "vue-router";
 window.Vue = Vue;
 window.axios = axios;
 
-Vue.config.devtools = false;
+Vue.config.devtools = true;
 
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,19 +21,17 @@ Vue.use(VueRouter);
 // Using Mixins
 Vue.mixin(applicationMixin);
 
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error(
+    "CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token"
+  );
 }
-
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
