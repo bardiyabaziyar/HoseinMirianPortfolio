@@ -17,7 +17,7 @@
     <!--Paralex -->
     <div id="parallax-holder">
       <parallax :parallax="true" :fixed="true">
-        <img :src="backgrounds.parallax"  alt="hosein mirian web developer"/>
+        <img :src="backgrounds.parallax" alt="hosein mirian web developer" />
       </parallax>
     </div>
     <!--ٍEnd of Paralex -->
