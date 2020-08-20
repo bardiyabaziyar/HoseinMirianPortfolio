@@ -17,7 +17,11 @@
     <!--Paralex -->
     <div id="parallax-holder">
       <parallax :parallax="true" :fixed="true">
-        <img :src="backgrounds.parallax" alt="hosein mirian web developer" />
+        <img
+          v-if="backgrounds.parallax"
+          :src="backgrounds.parallax"
+          alt="hosein mirian web developer"
+        />
       </parallax>
     </div>
     <!--ٍEnd of Paralex -->
@@ -39,7 +43,7 @@ import Parallax from "vue-parallaxy";
 import Service from "../components/Service";
 import Hero from "../components/Hero";
 import About from "../components/About";
-
+import { mapState } from "vuex";
 export default {
   name: "Home",
   components: {
@@ -50,13 +54,8 @@ export default {
     Skills,
     Parallax
   },
-  data: () => {
-    return {
-      backgrounds: {
-        parallax:
-          "http://hoseinmirian.com/assets/images/backgrounds/parallax.jpg"
-      }
-    };
+  computed: {
+    ...mapState(["backgrounds"])
   },
   beforeDestroy() {
     this.scrollToTop();

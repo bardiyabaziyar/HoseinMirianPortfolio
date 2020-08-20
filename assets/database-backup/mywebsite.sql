@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 20, 2020 at 04:04 PM
--- Server version: 5.7.24
--- PHP Version: 7.0.33
+-- Generation Time: Aug 20, 2020 at 06:29 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -51,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `abouts` (
 --
 
 INSERT INTO `abouts` (`id`, `name`, `biography`, `cv_link`, `age`, `full_summary`, `address`, `email`, `phone`, `nationality`, `degree`, `remote_availability`, `years_experience`) VALUES
-(1, 'Hossein Mirian', 'I am hossein Mirian. I was born in Isfahan,Iran. I started by graphic designing using Adobe Photoshop and gradually became...', 'http://hoseinmirian.com/cv/cv-mirian.pdf', '32', 'this is full summary', 'Oxford,United Kingdom', 'hosein.mirian@gmail.com', '+44 7376799008', 'Iran', 'Msc Advanced Computer Science', 'available', '12');
+(1, 'Hossein Mirian', 'I am hossein Mirian. I was born in Isfahan,Iran. I started by graphic designing using Adobe Photoshop and gradually became...', 'http://hoseinmirian.com/assets/cv/cv-mirian.pdf', '32', ' I am current University of Oxford Front-end developer/Researcher. I have been working as software developer the past 12 years.I graduated from Birmingham City University by achieving MSc Advanced Computer Science degree. ', 'Oxford,United Kingdom', 'hosein.mirian@gmail.com', '+44 7376799008', 'Iran', 'Msc Advanced Computer Science', 'available', '12');
 
 -- --------------------------------------------------------
 
@@ -72,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `backgrounds` (
 --
 
 INSERT INTO `backgrounds` (`id`, `hero`, `parallex`) VALUES
-(1, 'hero', 'parallex');
+(1, 'http://hoseinmirian.com/assets/images/backgrounds/hero.jpg', 'http://hoseinmirian.com/assets/images/backgrounds/parallax.jpg');
 
 -- --------------------------------------------------------
 
@@ -145,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `descriptions` (
 --
 
 INSERT INTO `descriptions` (`id`, `skills_description`, `hero_description`, `services_description`) VALUES
-(1, 'long description about skills', 'Web Developer,Graphic Designer, UI/UX designer, Software Tester', 'I can provide services from designing UI or any graphical object to implementing UX, developing front-end layout using Vue,Vuex,JS, giving it \"+\" stunning style using Sass/CSS and finally turning your idea into reality.');
+(1, 'My skills are numerous, from graphic design using photoshop and illustrator, sketching, mocking and UI/UX design by adobe XD to implementing the idea into a real professional output using my front-end and javascript skills such as vue, vuex, vuetify, etc. I also have a long experience of developing Android apps using Java as well as developing cross - platform apps using React Native.Besides, I have been very exposed to back - end development as well due to my experience to develop using PHP and familiarity with both REST and GraphQL API(s).', 'Web Developer,Graphic Designer, UI/UX designer, Software Tester', 'I can provide services from designing UI or any graphical object to implementing UX, developing front-end layout using Vue,Vuex,JS, giving it \"+\" stunning style using Sass/CSS and finally turning your idea into reality.');
 
 -- --------------------------------------------------------
 
@@ -259,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `portfolios` (
   `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `portfolios_portfolio_types_id_foreign` (`portfolio_types_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `portfolios`
@@ -267,7 +266,9 @@ CREATE TABLE IF NOT EXISTS `portfolios` (
 
 INSERT INTO `portfolios` (`id`, `portfolio_types_id`, `title`, `organization`, `location`, `source_code`, `website`, `project_image`, `role`) VALUES
 (1, 1, 'FairSharing Rebuild', 'University of Oxford', 'Oxford, UK', 'https://github.com/FAIRsharing/fairsharing.github.io', 'https://eng.ox.ac.uk/people/hossein-mirian', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'Front-End Developer'),
-(2, 1, 'Himart Startup', 'Mihan Food and Diary Co.', 'Oxford, UK', 'private project', 'mihan.org', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'Front-End Developer');
+(2, 1, 'Himart Startup', 'Mihan Food and Diary Co.', 'Oxford, UK', 'private project', 'mihan.org', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'Front-End Developer'),
+(3, 2, 'CRM', 'Crm Gravity', 'Birmingham, UK', 'private project', 'gravity', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'react-native developer'),
+(4, 3, 'Designing', 'Same', 'Tehran, Iran', 'private project', 'asdasdasda', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'Designer');
 
 -- --------------------------------------------------------
 
@@ -293,7 +294,8 @@ INSERT INTO `portfolio_skills` (`portfolio_id`, `skills_id`) VALUES
 (1, 3),
 (1, 4),
 (2, 1),
-(2, 4);
+(2, 4),
+(3, 4);
 
 -- --------------------------------------------------------
 
@@ -314,8 +316,8 @@ CREATE TABLE IF NOT EXISTS `portfolio_types` (
 
 INSERT INTO `portfolio_types` (`id`, `type`) VALUES
 (1, 'web'),
-(2, 'Mobile'),
-(3, 'UI/Ux Design');
+(2, 'mobile'),
+(3, 'design');
 
 -- --------------------------------------------------------
 
@@ -409,7 +411,7 @@ CREATE TABLE IF NOT EXISTS `socials` (
   `link` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `icon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `socials`
@@ -419,7 +421,7 @@ INSERT INTO `socials` (`id`, `name`, `link`, `icon`) VALUES
 (1, 'Github', 'https://www.github.com/hoseinmirian', 'Github'),
 (2, 'Gitlab', 'https://www.gitlab.com/hoseinmirian', 'Gitlab'),
 (3, 'Linkedin', 'https://www.linkedin.com/hoseinmirian', 'Linkedin'),
-(4, 'Facebook', 'https://www.facebook.com/hoseinmirian', 'Facebook');
+(5, 'Facebook', 'https://www.facebook.com/hoseinmirian', 'Facebook');
 
 -- --------------------------------------------------------
 

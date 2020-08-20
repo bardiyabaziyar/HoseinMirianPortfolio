@@ -4,13 +4,13 @@
       <div class="section-title">
         <span>My Services</span>
         <h2>My Services</h2>
-        <p>{{ description }}</p>
+        <p>{{ description.services_description }}</p>
       </div>
 
       <div class="row">
         <div
           class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 col-12"
-          v-for="(serviceItem, index) in serviceList"
+          v-for="(serviceItem, index) in services.services_list"
           :key="index"
         >
           <div class="icon-box">
@@ -37,43 +37,13 @@ import VueJs from "mdi-vue/Vuejs";
 import MaterialDesign from "mdi-vue/MaterialDesign";
 import LanguageCss3 from "mdi-vue/LanguageCss3";
 import Remote from "mdi-vue/RemoteDesktop";
+import { mapState } from "vuex";
 
 export default {
   name: "Service",
   components: { VueJs, MaterialDesign, LanguageCss3, Remote },
-  data: () => {
-    return {
-      description:
-        "I can provide services from designing UI or any graphical object " +
-        "to implementing UX, developing front-end layout using Vue,Vuex,JS, giving it " +
-        " stunning style using Sass/CSS and finally turning your idea into reality.",
-      serviceList: [
-        {
-          icon: "MaterialDesign",
-          title: "UI/UX",
-          description:
-            "designing UI/UX from scratch using Adobe XD and Adobe Photoshop"
-        },
-        {
-          icon: "VueJs",
-          title: "Front-End Development",
-          description:
-            "developing the UI using VueJS and Vuex plus offering tested application using Jest and Vue utils"
-        },
-        {
-          icon: "LanguageCss3",
-          title: "Consulting",
-          description:
-            "consultancy over improving projects' quality by identifying the flaws and offer special package"
-        },
-        {
-          icon: "Remote",
-          title: "Remote Developing",
-          description:
-            "Able to work remotely world-wide. Expert in working with git and testing"
-        }
-      ]
-    };
+  computed: {
+    ...mapState(["services", "description"])
   },
   mounted() {
     setTimeout(this.playAnimation, 3500);
