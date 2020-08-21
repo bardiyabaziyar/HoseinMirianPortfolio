@@ -17,10 +17,17 @@ class CreateResumesTable extends Migration
             $table->increments('id');
             $table->string('organization', 150);
             $table->string('location', 150);
-            $table->dateTime('from');
-            $table->dateTime('to');
+            $table->string('from');
+            $table->string('to');
             $table->string('role');
             $table->string('website');
+        });
+        Schema::create('bulletpoint_resume', function (Blueprint $table) {
+            $table->integer('bulletpoint_id')->unsigned();
+            $table->foreign('bulletpoint_id')->references('id')->on('bulletpoints')->onDelete('cascade');
+            $table->integer('resume_id')->unsigned();
+            $table->foreign('resume_id')->references('id')->on('resumes')->onDelete('cascade');
+            $table->primary(['bulletpoint_id', 'resume_id']);
         });
     }
 
@@ -31,6 +38,8 @@ class CreateResumesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workhistories');
+        Schema::dropIfExists('resumes');
+        Schema::dropIfExists('bulletpoint_resume');
+
     }
 }

@@ -13,25 +13,28 @@ class PortfolioResource extends Resource
      * @param  \Illuminate\Http\Request $request
      * @return array
      */
-    private function fetch_skills($obj)
+    private function merge_skills($skills)
     {
-        $list = [];
-        foreach ($obj->skills as $skill) {
-            $list[] .= $skill->skill_name;
+        $merge = [];
+        foreach ($skills as $skill) {
+            $merge[] .= $skill->skill_title;
         }
-        return $list;
+        return $merge;
     }
 
     public function toArray($request)
     {
 
         return [
-            'Description' => $this->description,
-            'Organization' => $this->organization_name,
-            'Link Address' => $this->project_link,
-            'project type' => $this->portfolio_type->type,
-            'portfolioImage' => $this->project_image,
-            'skills' => $this->fetch_skills($this)
+            'title' => $this->title,
+            'type' => $this->portfolio_type->type,
+            'img' => $this->project_image,
+            'organization' => $this->organization,
+            'location' => $this->location,
+            'role' => $this->role,
+            'website' => $this->website,
+            'source_code' => $this->source_code,
+            'techs' => $this->merge_skills(SkillResource::collection($this->skills))
 
         ];
     }

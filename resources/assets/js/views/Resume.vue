@@ -8,7 +8,7 @@
             <span class="pt-5">My Resume</span>
             <h2 class="pt-5">My Resume</h2>
           </div>
-          <a :href="about.cvLink" target="_blank">
+          <a :href="about.cv_link" target="_blank">
             <button
               style="width: 200px"
               type="button"
@@ -40,12 +40,12 @@
               <div
                 class="resume-item"
                 v-for="(item, index) in education"
-                :key="item.certificateName + '_' + index"
+                :key="item.certificate_name + '_' + index"
               >
-                <h4>{{ item.certificateName }}</h4>
+                <h4>{{ item.certificate_name }}</h4>
                 <h5>{{ item.from }} - {{ item.to }}</h5>
                 <p>
-                  <em>{{ item.organisation }}</em>
+                  <em>{{ item.organization }}</em>
                 </p>
                 <p>{{ item.description }}</p>
               </div>
@@ -57,9 +57,9 @@
               <div
                 class="resume-item"
                 v-for="(item, index) in resume"
-                :key="item.organisation + '_' + index"
+                :key="item.organization + '_' + index"
               >
-                <h4>{{ item.organisation }}</h4>
+                <h4>{{ item.organization }}</h4>
                 <h5>{{ item.from }} - {{ item.to }}</h5>
                 <p class="d-flex flex-column">
                   <a :href="item.website" target="_blank"
@@ -70,20 +70,20 @@
                 <mark>{{ item.role }}</mark>
                 <ul>
                   <li
-                    v-for="(bulletPoint, index) in item.bulletPoints"
+                    v-for="(bulletPoint, index) in item.bullet_points"
                     :key="bulletPoint + '_' + index"
                   >
                     {{ bulletPoint }}
                   </li>
                 </ul>
-                <p id="techs">
-                  Technology Used:
-                  <b
-                    v-for="(tech, index) in item.techs"
-                    :key="tech + '_' + index"
-                    >{{ tech }}{{ index !== item.techs.length - 1 ? "," : "" }}
-                  </b>
-                </p>
+                <!--          <p id="techs">
+                            Technology Used:
+                            <b
+                              v-for="(tech, index) in item.skills"
+                              :key="tech + '_' + index"
+                              >{{ tech }}{{ index !== item.techs.length - 1 ? "," : "" }}
+                            </b>
+                          </p>-->
               </div>
             </div>
           </div>
@@ -94,80 +94,15 @@
 </template>
 <script>
 import Download from "mdi-vue/Download";
+import { mapState } from "vuex";
 
 export default {
   name: "Resume",
   components: {
     Download
   },
-  data: () => {
-    return {
-      about: {
-        name: "Hossein Mirian",
-        biography:
-          "I am hossein Mirian. I was born in Isfahan,Iran. I started by graphic designing using Adobe Photoshop and gradually became " +
-          "interested in Adobe Flash and learned action script 2 and developed several flash applications. " +
-          "By learning Action Script I fell in love with programming and my story began! Currently I live in Oxford, UK.",
-        address: "Oxford,United Kingdom",
-        email: "hosein.mirian@gmail.com",
-        phone: "+44 7376799008",
-        cvLink: "http://hoseinmirian.com/cv/cv-mirian.pdf"
-      },
-      education: [
-        {
-          certificateName: "MSc Advanced Computer Science",
-          from: "2017",
-          to: "2018",
-          organisation: "Birmingham City University, Birmingham,UK",
-          description:
-            "Passed modules about new cutting-edge techs such as data science, semantic web, service oriented programming,etc. Eventually, I achieved an MSc degree with a 2.1 GPA "
-        },
-        {
-          certificateName: "BA Computer Software",
-          from: "2012",
-          to: "2014",
-          organisation: "Kashan University, Iran",
-          description:
-            "Passed modules such as C, C++, Delphi, Data Structure and more.. "
-        }
-      ],
-      resume: [
-        {
-          organisation: "University of Oxford",
-          location: "Oxford, UK",
-          from: "2019",
-          to: "present",
-          role: "Front-End Developer / Researcher",
-          website: "https://eng.ox.ac.uk/people/hossein-mirian",
-          techs: ["vue", "vuex", "vuetify", "unit test", "javascript"],
-          bulletPoints: [
-            "Identified the client demands and tried catching up with the prior codes",
-            "Designed the new UI/UX using Adobe XD and Photoshop",
-            "Implemented the store using VueX for CRUD commands.",
-            "Created an integrated system using singleton classes to fetch data from APIs (GraphQL & Rest)",
-            "Design and created a robust UI using Vuetify framework"
-          ]
-        },
-        {
-          organisation: "Himart Startup",
-          location: "Tehran, Iran",
-          from: "2018",
-          to: "2019",
-          role: "Front-End Developer",
-          website: "https://himart.ir",
-          techs: [
-            "vue",
-            "vuex",
-            "material design",
-            "green socks",
-            "javascript"
-          ],
-          bulletPoints: [
-            "Identified the client demands and trying to catch up with the prior codes"
-          ]
-        }
-      ]
-    };
+  computed: {
+    ...mapState(["about", "resume", "education"])
   },
   beforeDestroy() {
     this.scrollToTop();

@@ -15,9 +15,8 @@ class SocialResource extends Resource
     public function toArray($request)
     {
         return [
-            'name' => $this->name,
-            'link' => $this->link,
-            'logo' => $this->logo
+            'icon' => $this->icon,
+            'link' => $this->link
         ];
     }
 }

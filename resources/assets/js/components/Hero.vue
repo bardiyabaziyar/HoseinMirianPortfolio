@@ -1,16 +1,25 @@
 <template>
-  <section id="hero">
+  <section
+    id="hero"
+    v-if="backgrounds.hero"
+    :style="{
+      background: `url(${backgrounds.hero}) repeat scroll center center/cover`
+    }"
+  >
     <div class="container">
       <div class="hero-content">
         <h1>
           <vue-typer
+            v-if="hero.text_flasher"
             caret-animation="expand"
             :erase-delay="70"
-            :text="textArray"
+            :text="hero.text_flasher"
             erase-style="backspace"
           ></vue-typer>
         </h1>
-        <p>{{ headerDescription }}</p>
+        <p v-if="description.hero_description">
+          {{ description.hero_description }}
+        </p>
         <social />
         <a href="#about" class="btn-scroll scrollto" title="Scroll Down">
           <ChevronDown size="50px" />
@@ -24,32 +33,23 @@
 import { VueTyper } from "vue-typer";
 import Social from "../components/Social";
 import ChevronDown from "mdi-vue/ChevronDown";
+import { mapState } from "vuex";
 
 export default {
   name: "Hero",
+  computed: {
+    ...mapState(["backgrounds", "hero", "description"])
+  },
   components: {
     Social,
     VueTyper,
     ChevronDown
-  },
-  data: () => {
-    return {
-      headerDescription:
-        "Web Developer,Graphic Designer, UI/UX designer, Software Tester",
-      textArray: [
-        "I'm Hossein Mirian",
-        "I'm an expert Front-End developer",
-        "I'm a UI/UX designer",
-        "I'm a software tester"
-      ]
-    };
   }
 };
 </script>
 
 <style scoped>
 #hero {
-  background: url("../assets/home-bg.jpg") repeat scroll center center/cover;
   height: 100vh;
   width: 100%;
 }

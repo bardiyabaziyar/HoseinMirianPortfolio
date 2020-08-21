@@ -41,10 +41,10 @@
                     :main-props="mainProps"
                     :img="item.img"
                     :role="item.role"
-                    :organisation="item.organisation"
+                    :organisation="item.organization"
                     :location="item.location"
                     :website="item.website"
-                    :source-code="item.sourceCode"
+                    :source-code="item.source_code"
                     :description="item.description"
                     :techs="item.techs"
                     :type="item.type"
@@ -66,6 +66,7 @@ import Web from "mdi-vue/Web";
 import Cellphone from "mdi-vue/Cellphone";
 import Design from "mdi-vue/Brush";
 import PortfolioCard from "../components/PortfolioCard";
+import { mapState } from "vuex";
 
 export default {
   name: "Portfolio",
@@ -79,7 +80,8 @@ export default {
   computed: {
     isSmallScreen() {
       return window.innerWidth < 768;
-    }
+    },
+    ...mapState(["portfolio"])
   },
   data: () => {
     return {
@@ -99,86 +101,11 @@ export default {
         center: true,
         fluidGrow: true,
         blank: true,
-        blankSrc: `${require("../assets/image-placeholder.gif")}`,
+        blankSrc: `${require("../assets/images/image-placeholder.gif")}`,
         width: 600,
         height: 400,
         class: "my-3"
       },
-      portfolio: [
-        {
-          title: "FairSharing Rebuild",
-          type: "web",
-          img: "http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg",
-          organisation: "University of Oxford",
-          location: "Oxford, UK",
-          role: "Front-End Developer / Researcher",
-          website: "https://eng.ox.ac.uk/people/hossein-mirian",
-          sourceCode: "https://github.com/FAIRsharing/fairsharing.github.io",
-          techs: ["Vue", "Vuex", "Vuetify", "Unit Test", "JavaScript"],
-          description:
-            "FairSharing.org is a platform for standardizing world-wide researches, I along with other team members rebuilt the project from scratch using new techs such as vue,vuex and vuetify."
-        },
-        {
-          title: "Himart Startup",
-          type: "web",
-          img: "http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg",
-          organisation: "Mihan Food and Diary Co.",
-          location: "Oxford, UK",
-          role: "Front-End Developer",
-          website: "https://eng.ox.ac.uk/people/hossein-mirian",
-          sourceCode: "https://github.com/FAIRsharing/fairsharing.github.io",
-          techs: ["Vue", "Material Design", "javaScript"],
-          description: "description for Mihan project "
-        },
-        {
-          title: "CRM",
-          type: "mobile",
-          img: "http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg",
-          organisation: "Mihan Food and Diary Co.",
-          location: "Oxford, UK",
-          role: "Front-End Developer",
-          website: "https://eng.ox.ac.uk/people/hossein-mirian",
-          sourceCode: "https://github.com/FAIRsharing/fairsharing.github.io",
-          techs: ["Vue", "Material Design", "javaScript"],
-          description: "description for a mobile app."
-        },
-        {
-          title: "mobile project title 1",
-          type: "mobile",
-          img: "http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg",
-          organisation: "Mihan Food and Diary Co.",
-          location: "Oxford, UK",
-          role: "Front-End Developer",
-          website: "https://eng.ox.ac.uk/people/hossein-mirian",
-          sourceCode: "https://github.com/FAIRsharing/fairsharing.github.io",
-          techs: ["Vue", "Material Design", "javaScript"],
-          description: "description for a mobile app."
-        },
-        {
-          title: "mobile project title 2",
-          type: "mobile",
-          img: "http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg",
-          organisation: "Mihan Food and Diary Co.",
-          location: "Oxford, UK",
-          role: "Front-End Developer",
-          website: "https://eng.ox.ac.uk/people/hossein-mirian",
-          sourceCode: "https://github.com/FAIRsharing/fairsharing.github.io",
-          techs: ["Vue", "Material Design", "javaScript"],
-          description: "description for a mobile app."
-        },
-        {
-          title: "mobile project title 2",
-          type: "design",
-          img: "http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg",
-          organisation: "Mihan Food and Diary Co.",
-          location: "Oxford, UK",
-          role: "Front-End Developer",
-          website: "https://eng.ox.ac.uk/people/hossein-mirian",
-          sourceCode: "https://github.com/FAIRsharing/fairsharing.github.io",
-          techs: ["Vue", "Material Design", "javaScript"],
-          description: "description for a mobile app."
-        }
-      ],
       currentPortfolio: []
     };
   },
@@ -197,6 +124,7 @@ export default {
     },
     updateCard(tabTitle) {
       if (tabTitle.toLowerCase() !== "all") {
+        console.log(this.portfolio);
         this.currentPortfolio = this.portfolio.filter(
           item => item.type === tabTitle.toString().toLowerCase()
         );

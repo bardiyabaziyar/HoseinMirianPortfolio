@@ -15,7 +15,7 @@ class CreatePortfolioTypesTable extends Migration
     {
         Schema::create('portfolio_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
+            $table->string('type', 30);
         });
     }
 

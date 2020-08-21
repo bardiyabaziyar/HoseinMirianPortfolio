@@ -15,11 +15,11 @@ class CreateEducationsTable extends Migration
     {
         Schema::create('educations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('certificate_name');
+            $table->string('certificate_name', 150);
             $table->string('organization_name', 150);
-            $table->dateTime('from');
-            $table->dateTime('to');
-            $table->string('certificate_GPA');
+            $table->string('from');
+            $table->string('to');
+            $table->string('description');
         });
     }
 
