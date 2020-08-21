@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 20, 2020 at 06:29 PM
+-- Generation Time: Aug 21, 2020 at 11:32 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -258,17 +258,22 @@ CREATE TABLE IF NOT EXISTS `portfolios` (
   `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `portfolios_portfolio_types_id_foreign` (`portfolio_types_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `portfolios`
 --
 
 INSERT INTO `portfolios` (`id`, `portfolio_types_id`, `title`, `organization`, `location`, `source_code`, `website`, `project_image`, `role`) VALUES
-(1, 1, 'FairSharing Rebuild', 'University of Oxford', 'Oxford, UK', 'https://github.com/FAIRsharing/fairsharing.github.io', 'https://eng.ox.ac.uk/people/hossein-mirian', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'Front-End Developer'),
-(2, 1, 'Himart Startup', 'Mihan Food and Diary Co.', 'Oxford, UK', 'private project', 'mihan.org', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'Front-End Developer'),
-(3, 2, 'CRM', 'Crm Gravity', 'Birmingham, UK', 'private project', 'gravity', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'react-native developer'),
-(4, 3, 'Designing', 'Same', 'Tehran, Iran', 'private project', 'asdasdasda', 'http://www.hoseinmirian.com/img/portfolio/img1_17082020.jpg', 'Designer');
+(1, 1, 'FairSharing Rebuild', 'University of Oxford', 'Oxford, UK', 'https://github.com/FAIRsharing/fairsharing.github.io', 'https://eng.ox.ac.uk/people/hossein-mirian', 'http://www.hoseinmirian.com/assets/images/portfolio/fairsharing.jpg', 'Front-End Developer / Researcher'),
+(2, 1, 'Himart Startup', 'Mihan Food and Diary Co.', 'Tehran, Iran', '', 'https://www.youtube.com/watch?v=1E2Y6_q_mgI&t=9s', 'http://www.hoseinmirian.com/assets/images/portfolio/himart.jpg', 'Front-End Developer'),
+(3, 1, 'Hosein Mirian Website', 'Personal', 'Oxford, UK', 'https://github.com/bardiyabaziyar/HoseinMirianPortfolio', 'http://www.hoseinmirian.com', 'http://www.hoseinmirian.com/assets/images/portfolio/hoseinmirian.jpg', 'Front-End Developer'),
+(4, 1, '8InteriorDesign', 'Personal', 'London, UK', '', 'https://www.8interiordesign.com', 'http://www.hoseinmirian.com/assets/images/portfolio/8interiordesign.jpg', 'Full-Stack Developer'),
+(9, 2, 'GravitiChain CRM', 'GravitiChain', 'Birmingham, UK', '', 'https://www.youtube.com/watch?v=-kS8_--dChc', 'http://www.hoseinmirian.com/assets/images/portfolio/gravitichain.jpg', 'Android Developer'),
+(5, 1, 'KhabarFarsi', 'Parto Tech co', 'Tehran, Iran', '', 'https://khabarfarsi.com', 'http://www.hoseinmirian.com/assets/images/portfolio/khabarfarsi.jpg', 'Full-Stack Developer'),
+(6, 1, 'LoveUnderDog', 'Kaweb', 'Tehran, Iran', '', 'https://www.loveunderdogs.org/', 'http://www.hoseinmirian.com/assets/images/portfolio/loveunderdog.jpg', 'Full-Stack Developer'),
+(7, 2, 'Casper English App', 'Personal', 'Esfahan, Iran', 'https://gitlab.com/hosein_mirian/Casper', '', 'http://www.hoseinmirian.com/assets/images/portfolio/casper.jpg', 'Android Developer'),
+(8, 2, 'English with Smart Subtitle', 'Personal', 'Esfahan, Iran', '', 'https://www.youtube.com/watch?v=cNIT9Fr3vpk', 'http://www.hoseinmirian.com/assets/images/portfolio/englishwithsub.jpg', 'Android Developer');
 
 -- --------------------------------------------------------
 
