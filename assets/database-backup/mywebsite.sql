@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 21, 2020 at 11:32 AM
+-- Generation Time: Aug 21, 2020 at 12:59 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -258,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `portfolios` (
   `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `portfolios_portfolio_types_id_foreign` (`portfolio_types_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `portfolios`
@@ -273,7 +273,14 @@ INSERT INTO `portfolios` (`id`, `portfolio_types_id`, `title`, `organization`, `
 (5, 1, 'KhabarFarsi', 'Parto Tech co', 'Tehran, Iran', '', 'https://khabarfarsi.com', 'http://www.hoseinmirian.com/assets/images/portfolio/khabarfarsi.jpg', 'Full-Stack Developer'),
 (6, 1, 'LoveUnderDog', 'Kaweb', 'Tehran, Iran', '', 'https://www.loveunderdogs.org/', 'http://www.hoseinmirian.com/assets/images/portfolio/loveunderdog.jpg', 'Full-Stack Developer'),
 (7, 2, 'Casper English App', 'Personal', 'Esfahan, Iran', 'https://gitlab.com/hosein_mirian/Casper', '', 'http://www.hoseinmirian.com/assets/images/portfolio/casper.jpg', 'Android Developer'),
-(8, 2, 'English with Smart Subtitle', 'Personal', 'Esfahan, Iran', '', 'https://www.youtube.com/watch?v=cNIT9Fr3vpk', 'http://www.hoseinmirian.com/assets/images/portfolio/englishwithsub.jpg', 'Android Developer');
+(11, 3, 'Barber House Logo', 'BarberHouse', 'Birmingham,UK', '', '', 'http://www.hoseinmirian.com/assets/images/portfolio/barberHouse.jpg', 'Graphic Designer'),
+(8, 2, 'English with Smart Subtitle', 'Personal', 'Esfahan, Iran', '', 'https://www.youtube.com/watch?v=cNIT9Fr3vpk', 'http://www.hoseinmirian.com/assets/images/portfolio/englishwithsub.jpg', 'Android Developer'),
+(12, 3, 'IcePack centre', 'Icepack center', 'Esfahan,Iran', '', '', 'http://www.hoseinmirian.com/assets/images/portfolio/icepack1.jpg', 'Graphic Designer'),
+(13, 3, 'IcePack centre', 'Icepack center', 'Esfahan,Iran', '', '', 'http://www.hoseinmirian.com/assets/images/portfolio/icepack2.jpg', 'Graphic Designer'),
+(14, 3, 'Barber shop visit card', 'Barber shop', 'Esfahan,Iran', '', '', 'http://www.hoseinmirian.com/assets/images/portfolio/barbervisitcard.jpg', 'Graphic Designer'),
+(15, 3, 'IT Univ Catalog', 'IT UNIV', 'Esfahan,Iran', '', '', 'http://www.hoseinmirian.com/assets/images/portfolio/ituniv.jpg', 'Graphic Designer'),
+(16, 3, 'Imaj Catalog', 'Imaj Co', 'Esfahan,Iran', '', '', 'http://www.hoseinmirian.com/assets/images/portfolio/iamj.jpg', 'Graphic Designer'),
+(17, 3, 'Same Logo', 'Same Co', 'Esfahan,Iran', '', '', 'http://www.hoseinmirian.com/assets/images/portfolio/same.jpg', 'Graphic Designer');
 
 -- --------------------------------------------------------
 
