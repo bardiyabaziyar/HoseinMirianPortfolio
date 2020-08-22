@@ -32,6 +32,7 @@ class PortfolioResource extends Resource
             'organization' => $this->organization,
             'location' => $this->location,
             'role' => $this->role,
+            'description'=>$this->description,
             'website' => $this->website,
             'source_code' => $this->source_code,
             'techs' => $this->merge_skills(SkillResource::collection($this->skills))

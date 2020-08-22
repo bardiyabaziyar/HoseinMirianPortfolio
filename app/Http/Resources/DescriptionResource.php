@@ -17,7 +17,8 @@ class DescriptionResource extends Resource
         return [
             'skills_description' => $this->skills_description,
             'hero_description' => $this->hero_description,
-            'services_description' => $this->services_description
+            'services_description' => $this->services_description,
+            'about_description' => $this->about_description
         ];
     }
 }
