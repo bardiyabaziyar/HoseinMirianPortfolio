@@ -24,6 +24,7 @@ class CreatePortfoliosTable extends Migration
             $table->string('website');
             $table->string('project_image');
             $table->string('role');
+            $table->text('description');
         });
 
         Schema::create('portfolio_skills', function (Blueprint $table) {
