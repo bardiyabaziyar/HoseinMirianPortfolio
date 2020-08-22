@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 22, 2020 at 05:44 PM
--- Server version: 5.7.24
--- PHP Version: 7.0.33
+-- Generation Time: Aug 22, 2020 at 06:04 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -146,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `descriptions` (
 --
 
 INSERT INTO `descriptions` (`id`, `skills_description`, `hero_description`, `services_description`, `about_description`) VALUES
-(1, 'My skills are numerous, from graphic design using photoshop and illustrator, sketching, mocking and UI/UX design by adobe XD to implementing the idea into a real professional output using my front-end and javascript skills such as vue, vuex, vuetify, etc. I also have a long experience of developing Android apps using Java as well as developing cross - platform apps using React Native.Besides, I have been very exposed to back - end development as well due to my experience to develop using PHP and familiarity with both REST and GraphQL API(s).', 'Web Developer,Graphic Designer, UI/UX designer, Software Tester', 'I can provide services from designing UI or any graphical object to implementing UX, developing front-end layout using Vue,Vuex,JS, giving it \"+\" stunning style using Sass/CSS and finally turning your idea into reality.', '-');
+(1, 'My skills are numerous, from graphic design using photoshop and illustrator, sketching, mocking and UI/UX design by adobe XD to implementing the idea into a real professional output using my front-end and javascript skills such as vue, vuex, vuetify, etc. I also have a long experience of developing Android apps using Java as well as developing cross - platform apps using React Native.Besides, I have been very exposed to back - end development as well due to my experience to develop using PHP and familiarity with both REST and GraphQL API(s).', 'Web Developer,Graphic Designer, UI/UX designer, Software Tester', 'I can provide services from designing UI or any graphical object to implementing UX, developing front-end layout using Vue,Vuex,JS, giving it \"+\" stunning style using Sass/CSS and finally turning your idea into reality.', 'If you have any inquiry about kicking off a project, estimating the price, business plan, and more, please feel free to contact me through email social media');
 
 -- --------------------------------------------------------
 
