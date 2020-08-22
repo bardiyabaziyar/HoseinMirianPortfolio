@@ -5,7 +5,7 @@
         <div class="section-title">
           <span>About Me</span>
           <h2>About Me</h2>
-          <p>{{ description.about_description }}</p>
+          <p>{{ about.full_summary }}</p>
         </div>
         <div class="row">
           <div class="col-lg-6  ">
@@ -67,7 +67,7 @@ export default {
     ChevronRight
   },
   computed: {
-    ...mapState(["about","description"])
+    ...mapState(["about"])
   }
 };
 </script>

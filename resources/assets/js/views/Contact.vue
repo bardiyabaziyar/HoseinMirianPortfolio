@@ -6,7 +6,7 @@
           <div class="section-title">
             <span>Contact Me</span>
             <h2>Contact Me</h2>
-            <p>{{ about.contactDescription }}</p>
+            <p>{{ description.about_description }}</p>
           </div>
           <div class="row">
             <div class="col-lg-6">
@@ -145,7 +145,7 @@ export default {
     Gmail
   },
   computed: {
-    ...mapState(["about", "socials"])
+    ...mapState(["about", "socials", "description"])
   },
   beforeDestroy() {
     this.scrollToTop();
