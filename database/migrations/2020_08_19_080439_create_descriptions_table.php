@@ -18,6 +18,7 @@ class CreateDescriptionsTable extends Migration
             $table->text('skills_description');
             $table->text('hero_description');
             $table->text('services_description');
+            $table->text('about_description');
         });
     }
 

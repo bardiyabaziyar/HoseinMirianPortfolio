@@ -10,7 +10,11 @@ class RESTClient {
       return RESTClient._instance;
     }
     RESTClient._instance = this;
-    this.baseURL = "http://localhost:8000/api/";
+
+    this.apiLocal = "http://localhost:8000/api/";
+    // this.apiServer = "http://hoseinmirian.com/api";
+
+    this.baseURL = this.apiLocal;
     this.headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -27,6 +31,7 @@ class RESTClient {
     let response = await this.executeQuery(request);
     return response.data;
   }
+
   /* EXTRA METHODS */
 
   /**
