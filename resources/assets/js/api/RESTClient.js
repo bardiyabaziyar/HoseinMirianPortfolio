@@ -12,7 +12,7 @@ class RESTClient {
     RESTClient._instance = this;
 
     this.apiLocal = "http://localhost:8000/api/";
-    // this.apiServer = "http://hoseinmirian.com/api";
+    // this.apiServer = "http://hoseinmirian.com/api/";
 
     this.baseURL = this.apiLocal;
     this.headers = {
