@@ -1,6 +1,6 @@
 <template>
   <ul class="list-unstyled list-social">
-    <li v-for="(socialItem, index) in socialList" :key="index">
+    <li v-for="(socialItem, index) in socials.socials_list" :key="index">
       <a :href="socialItem.link" target="_blank">
         <component :is="socialItem.icon" class="social-color"></component>
       </a>
@@ -13,6 +13,7 @@ import Facebook from "mdi-vue/Facebook";
 import Github from "mdi-vue/Github";
 import Gitlab from "mdi-vue/Gitlab";
 import Linkedin from "mdi-vue/Linkedin";
+import { mapState } from "vuex";
 
 export default {
   name: "Social",
@@ -22,15 +23,8 @@ export default {
     Linkedin,
     Facebook
   },
-  data: () => {
-    return {
-      socialList: [
-        { icon: "Github", link: "https://www.github.com/hoseinmirian" },
-        { icon: "Gitlab", link: "https://www.gitlab.com/hoseinmirian" },
-        { icon: "Linkedin", link: "https://www.linkedin.com/hoseinmirian" },
-        { icon: "Facebook", link: "https://www.facebook.com/hoseinmirian" }
-      ]
-    };
+  computed: {
+    ...mapState(["socials"])
   }
 };
 </script>
