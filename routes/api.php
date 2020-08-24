@@ -31,5 +31,6 @@ Route::group([], function () {
     Route::get('/education', 'EducationController@index');
     Route::get('/description', 'DescriptionController@index');
     Route::get('/education/{education}', 'EducationController@single');
+    Route::post('/contact', 'ContactController@store');
 
 });
