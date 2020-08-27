@@ -1,5 +1,3 @@
-import axios from "axios";
-
 class RESTClient {
   /**
    * The RESTClient is a singleton class that handles the connection and data exchange from the back-end
@@ -41,7 +39,7 @@ class RESTClient {
    */
   async executeQuery(query) {
     try {
-      return await axios(query);
+      return await window.axios(query);
     } catch (e) {
       return { data: { error: e } };
     }
