@@ -1,5 +1,3 @@
-import axios from "axios";
-
 class RESTClient {
   /**
    * The RESTClient is a singleton class that handles the connection and data exchange from the back-end
@@ -14,7 +12,7 @@ class RESTClient {
     this.apiLocal = "http://localhost:8000/api/";
     // this.apiServer = "http://hoseinmirian.com/api/";
 
-    this.baseURL = this.apiServer;
+    this.baseURL = this.apiLocal;
     this.headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -41,7 +39,7 @@ class RESTClient {
    */
   async executeQuery(query) {
     try {
-      return await axios(query);
+      return await window.axios(query);
     } catch (e) {
       return { data: { error: e } };
     }
