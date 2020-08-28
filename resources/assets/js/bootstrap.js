@@ -10,7 +10,7 @@ import { applicationMixin } from "./mixins/applicationMixin";
 window.Vue = Vue;
 window.axios = axios;
 
-Vue.config.devtools = true;
+Vue.config.devtools = false;
 Vue.config.productionTip = false;
 
 // Install BootstrapVue

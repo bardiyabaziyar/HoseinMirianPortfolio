@@ -1,63 +1,69 @@
 <template>
   <main>
-    <section id="portfolio" class="portfolio">
-      <div class="container">
-        <div class="portfolio-content">
-          <!--  title  -->
-          <div class="section-title">
-            <span class="pt-5">My Portfolio</span>
-            <h2 class="pt-5">My Portfolio</h2>
-          </div>
-          <!--  tabs  -->
-          <div
-            class="d-flex flex-column"
-            :class="isSmallScreen ? 'button-holder-sm' : 'button-holder'"
-          >
-            <button
-              type="button"
-              class="btn btn-outline-warning mb-2  d-flex justify-content-between"
-              :class="{ active: tab.active }"
-              v-for="(tab, index) in tabList"
-              :key="tab.title + '_' + index"
-              @click="selectTab(tab.title)"
+    <div v-if="loading" class="spinner-holder">
+      <b-spinner type="grow" label="Loading..." variant="warning"></b-spinner>
+      <p>Loading...</p>
+    </div>
+    <transition name="fade" mode="out-in">
+      <section id="portfolio" class="portfolio" v-if="!loading">
+        <div class="container">
+          <div class="portfolio-content">
+            <!--  title  -->
+            <div class="section-title">
+              <span class="pt-5">My Portfolio</span>
+              <h2 class="pt-5">My Portfolio</h2>
+            </div>
+            <!--  tabs  -->
+            <div
+              class="d-flex flex-column"
+              :class="isSmallScreen ? 'button-holder-sm' : 'button-holder'"
             >
-              <component :is="tab.icon" class="social-color"></component>
-              <span>{{ tab.title }} ({{ portfolioLength[tab.title] }})</span>
-            </button>
-          </div>
-          <!--end of Tabs-->
+              <button
+                type="button"
+                class="btn btn-outline-warning mb-2  d-flex justify-content-between"
+                :class="{ active: tab.active }"
+                v-for="(tab, index) in tabList"
+                :key="tab.title + '_' + index"
+                @click="selectTab(tab.title)"
+              >
+                <component :is="tab.icon" class="social-color"></component>
+                <span>{{ tab.title }} ({{ portfolioLength[tab.title] }})</span>
+              </button>
+            </div>
+            <!--end of Tabs-->
 
-          <div class="row mt-2">
-            <div class="col-md-4"></div>
+            <div class="row mt-2">
+              <div class="col-md-4"></div>
 
-            <!--Content-->
-            <div class="col-sm-12 col-md-8">
-              <div class="row">
-                <div class="col-12">
-                  <PortfolioCard
-                    v-for="(item, index) in currentPortfolio"
-                    :key="item.title + '_' + index"
-                    :title="item.title"
-                    :main-props="mainProps"
-                    :img="item.img"
-                    :role="item.role"
-                    :organisation="item.organization"
-                    :location="item.location"
-                    :website="item.website"
-                    :source-code="item.source_code"
-                    :description="item.description"
-                    :techs="item.techs"
-                    :type="item.type"
-                    class="mb-4"
-                  />
+              <!--Content-->
+              <div class="col-sm-12 col-md-8">
+                <div class="row">
+                  <div class="col-12">
+                    <PortfolioCard
+                      v-for="(item, index) in currentPortfolio"
+                      :key="item.title + '_' + index"
+                      :title="item.title"
+                      :main-props="mainProps"
+                      :img="item.img"
+                      :role="item.role"
+                      :organisation="item.organization"
+                      :location="item.location"
+                      :website="item.website"
+                      :source-code="item.source_code"
+                      :description="item.description"
+                      :techs="item.techs"
+                      :type="item.type"
+                      class="mb-4"
+                    />
+                  </div>
                 </div>
               </div>
+              <!--end of Content-->
             </div>
-            <!--end of Content-->
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </transition>
   </main>
 </template>
 <script>
@@ -81,7 +87,7 @@ export default {
     isSmallScreen() {
       return window.innerWidth < 768;
     },
-    ...mapState(["portfolio"])
+    ...mapState(["portfolio", "loading"])
   },
   data: () => {
     return {
