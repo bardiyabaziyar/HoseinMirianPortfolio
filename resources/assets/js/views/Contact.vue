@@ -1,121 +1,127 @@
 <template>
   <main>
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="contact-content">
-          <div class="section-title">
-            <span>Contact Me</span>
-            <h2>Contact Me</h2>
-            <p>{{ description.about_description }}</p>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="info-box">
-                    <ShareVariant class="bx bx-share-alt" />
-                    <h3 class="mt-3" style="margin-bottom: 34px">
-                      Social Profiles
-                    </h3>
-                    <div class="social-links">
-                      <a
-                        :href="socialItem.link"
-                        target="_blank"
-                        v-for="(socialItem, index) in socials.socials_list"
-                        :key="index"
-                      >
-                        <component
-                          :is="socialItem.icon"
-                          class="social-color"
-                        ></component>
-                      </a>
+    <div v-if="loading" class="spinner-holder">
+      <b-spinner type="grow" label="Loading..." variant="warning"></b-spinner>
+      <p>Loading...</p>
+    </div>
+    <transition name="fade" mode="out-in">
+      <section id="contact" class="contact" v-if="!loading">
+        <div class="container">
+          <div class="contact-content">
+            <div class="section-title">
+              <span>Contact Me</span>
+              <h2>Contact Me</h2>
+              <p>{{ description.about_description }}</p>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="info-box">
+                      <ShareVariant class="bx bx-share-alt" />
+                      <h3 class="mt-3" style="margin-bottom: 34px">
+                        Social Profiles
+                      </h3>
+                      <div class="social-links">
+                        <a
+                          :href="socialItem.link"
+                          target="_blank"
+                          v-for="(socialItem, index) in socials.socials_list"
+                          :key="index"
+                        >
+                          <component
+                            :is="socialItem.icon"
+                            class="social-color"
+                          ></component>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="info-box mt-4">
+                      <Gmail class="bx bx-share-alt" />
+                      <h3 class="mt-3">Email Me</h3>
+                      <p>{{ about.email }}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="info-box mt-4">
+                      <Phone class="bx bx-share-alt" />
+                      <h3 class="mt-3">Call Me</h3>
+                      <p>{{ about.phone }}</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="info-box mt-4">
-                    <Gmail class="bx bx-share-alt" />
-                    <h3 class="mt-3">Email Me</h3>
-                    <p>{{ about.email }}</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="info-box mt-4">
-                    <Phone class="bx bx-share-alt" />
-                    <h3 class="mt-3">Call Me</h3>
-                    <p>{{ about.phone }}</p>
-                  </div>
-                </div>
               </div>
-            </div>
 
-            <div class="col-lg-6">
-              <form role="form" class="php-email-form">
-                <div class="form-row">
-                  <div class="col-md-6 form-group">
+              <div class="col-lg-6">
+                <form role="form" class="php-email-form">
+                  <div class="form-row">
+                    <div class="col-md-6 form-group">
+                      <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        id="name"
+                        placeholder="Your Name"
+                        data-rule="minlen:4"
+                        data-msg="Please enter at least 4 chars"
+                      />
+                      <div class="validate"></div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        placeholder="Your Email"
+                        data-rule="email"
+                        data-msg="Please enter a valid email"
+                      />
+                      <div class="validate"></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <input
                       type="text"
-                      name="name"
                       class="form-control"
-                      id="name"
-                      placeholder="Your Name"
+                      name="subject"
+                      id="subject"
+                      placeholder="Subject"
                       data-rule="minlen:4"
-                      data-msg="Please enter at least 4 chars"
+                      data-msg="Please enter at least 8 chars of subject"
                     />
                     <div class="validate"></div>
                   </div>
-                  <div class="col-md-6 form-group">
-                    <input
-                      type="email"
+                  <div class="form-group">
+                    <textarea
                       class="form-control"
-                      name="email"
-                      id="email"
-                      placeholder="Your Email"
-                      data-rule="email"
-                      data-msg="Please enter a valid email"
-                    />
+                      name="message"
+                      rows="6"
+                      data-rule="required"
+                      data-msg="Please write something for us"
+                      placeholder="Message"
+                    ></textarea>
                     <div class="validate"></div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="subject"
-                    id="subject"
-                    placeholder="Subject"
-                    data-rule="minlen:4"
-                    data-msg="Please enter at least 8 chars of subject"
-                  />
-                  <div class="validate"></div>
-                </div>
-                <div class="form-group">
-                  <textarea
-                    class="form-control"
-                    name="message"
-                    rows="6"
-                    data-rule="required"
-                    data-msg="Please write something for us"
-                    placeholder="Message"
-                  ></textarea>
-                  <div class="validate"></div>
-                </div>
-                <div class="mb-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">
-                    Your message has been sent. Thank you!
+                  <div class="mb-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">
+                      Your message has been sent. Thank you!
+                    </div>
                   </div>
-                </div>
-                <div class="text-center">
-                  <button type="submit">Send Message</button>
-                </div>
-              </form>
+                  <div class="text-center">
+                    <button type="submit">Send Message</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </transition>
   </main>
 </template>
 <script>
@@ -140,7 +146,7 @@ export default {
     Gmail
   },
   computed: {
-    ...mapState(["about", "socials", "description"])
+    ...mapState(["about", "socials", "description", "loading"])
   },
   beforeDestroy() {
     this.scrollToTop();

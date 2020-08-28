@@ -1,95 +1,101 @@
 <template>
   <main>
-    <section id="resume" class="resume">
-      <div class="container">
-        <div class="resume-content">
-          <!--  title  -->
-          <div class="section-title">
-            <span class="pt-5">My Resume</span>
-            <h2 class="pt-5">My Resume</h2>
-          </div>
-          <a :href="about.cv_link" target="_blank">
-            <button
-              style="width: 200px"
-              type="button"
-              class="btn btn-outline-warning mb-2  d-flex justify-content-between"
-            >
-              <Download />
-              <b>Download CV</b>
-            </button>
-          </a>
-          <div class="row">
-            <!--     Summary & Education         -->
-            <div class="col-lg-6">
-              <!--     Summary         -->
-              <h3 class="resume-title">Summary</h3>
-              <div class="resume-item">
-                <h4>{{ about.name }}</h4>
-                <p>
-                  <em>{{ about.biography }} </em>
-                </p>
-                <ul>
-                  <li>{{ about.address }}</li>
-                  <li>{{ about.phone }}</li>
-                  <li>{{ about.email }}</li>
-                </ul>
-              </div>
-
-              <!--       Education       -->
-              <h3 class="resume-title">Education</h3>
-              <div
-                class="resume-item"
-                v-for="(item, index) in education"
-                :key="item.certificate_name + '_' + index"
-              >
-                <h4>{{ item.certificate_name }}</h4>
-                <h5>{{ item.from }} - {{ item.to }}</h5>
-                <p>
-                  <em>{{ item.organization }}</em>
-                </p>
-                <p>{{ item.description }}</p>
-              </div>
+    <div v-if="loading" class="spinner-holder">
+      <b-spinner type="grow" label="Loading..." variant="warning"></b-spinner>
+      <p>Loading...</p>
+    </div>
+    <transition name="fade" mode="out-in">
+      <section id="resume" class="resume" v-if="!loading">
+        <div class="container">
+          <div class="resume-content">
+            <!--  title  -->
+            <div class="section-title">
+              <span class="pt-5">My Resume</span>
+              <h2 class="pt-5">My Resume</h2>
             </div>
-
-            <!--     WorkExperience        -->
-            <div class="col-lg-6">
-              <h3 class="resume-title">Professional Experience</h3>
-              <div
-                class="resume-item"
-                v-for="(item, index) in resume"
-                :key="item.organization + '_' + index"
+            <a :href="about.cv_link" target="_blank">
+              <button
+                  style="width: 200px"
+                  type="button"
+                  class="btn btn-outline-warning mb-2  d-flex justify-content-between"
               >
-                <h4>{{ item.organization }}</h4>
-                <h5>{{ item.from }} - {{ item.to }}</h5>
-                <p class="d-flex flex-column">
-                  <a :href="item.website" target="_blank"
+                <Download />
+                <b>Download CV</b>
+              </button>
+            </a>
+            <div class="row">
+              <!--     Summary & Education         -->
+              <div class="col-lg-6">
+                <!--     Summary         -->
+                <h3 class="resume-title">Summary</h3>
+                <div class="resume-item">
+                  <h4>{{ about.name }}</h4>
+                  <p>
+                    <em>{{ about.biography }} </em>
+                  </p>
+                  <ul>
+                    <li>{{ about.address }}</li>
+                    <li>{{ about.phone }}</li>
+                    <li>{{ about.email }}</li>
+                  </ul>
+                </div>
+
+                <!--       Education       -->
+                <h3 class="resume-title">Education</h3>
+                <div
+                    class="resume-item"
+                    v-for="(item, index) in education"
+                    :key="item.certificate_name + '_' + index"
+                >
+                  <h4>{{ item.certificate_name }}</h4>
+                  <h5>{{ item.from }} - {{ item.to }}</h5>
+                  <p>
+                    <em>{{ item.organization }}</em>
+                  </p>
+                  <p>{{ item.description }}</p>
+                </div>
+              </div>
+
+              <!--     WorkExperience        -->
+              <div class="col-lg-6">
+                <h3 class="resume-title">Professional Experience</h3>
+                <div
+                    class="resume-item"
+                    v-for="(item, index) in resume"
+                    :key="item.organization + '_' + index"
+                >
+                  <h4>{{ item.organization }}</h4>
+                  <h5>{{ item.from }} - {{ item.to }}</h5>
+                  <p class="d-flex flex-column">
+                    <a :href="item.website" target="_blank"
                     >{{ item.website }}
-                  </a>
-                  <em>{{ item.location }} </em>
-                </p>
-                <mark>{{ item.role }}</mark>
-                <ul>
-                  <li
-                    v-for="(bulletPoint, index) in item.bullet_points"
-                    :key="bulletPoint + '_' + index"
-                  >
-                    {{ bulletPoint }}
-                  </li>
-                </ul>
-                <!--          <p id="techs">
-                            Technology Used:
-                            <b
-                              v-for="(tech, index) in item.skills"
-                              :key="tech + '_' + index"
-                              >{{ tech }}{{ index !== item.techs.length - 1 ? "," : "" }}
-                            </b>
-                          </p>-->
+                    </a>
+                    <em>{{ item.location }} </em>
+                  </p>
+                  <mark>{{ item.role }}</mark>
+                  <ul>
+                    <li
+                        v-for="(bulletPoint, index) in item.bullet_points"
+                        :key="bulletPoint + '_' + index"
+                    >
+                      {{ bulletPoint }}
+                    </li>
+                  </ul>
+                  <!--          <p id="techs">
+                              Technology Used:
+                              <b
+                                v-for="(tech, index) in item.skills"
+                                :key="tech + '_' + index"
+                                >{{ tech }}{{ index !== item.techs.length - 1 ? "," : "" }}
+                              </b>
+                            </p>-->
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </transition>
   </main>
 </template>
 <script>
@@ -102,7 +108,7 @@ export default {
     Download
   },
   computed: {
-    ...mapState(["about", "resume", "education"])
+    ...mapState(["about", "resume", "education","loading"])
   },
   beforeDestroy() {
     this.scrollToTop();

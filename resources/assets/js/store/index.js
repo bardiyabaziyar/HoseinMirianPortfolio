@@ -15,7 +15,8 @@ export default new Vuex.Store({
     education: [],
     portfolio: [],
     resume: [],
-    currentPortfolio: []
+    currentPortfolio: [],
+    loading: true
   },
   mutations: {
     setParameters(state, data) {
@@ -23,11 +24,17 @@ export default new Vuex.Store({
         state[key] = data[key];
       });
       state.currentPortfolio = [];
+    },
+    setLoading(state, status) {
+      state.loading = status;
     }
   },
   actions: {
     async fetchParameters(state, data) {
       this.commit("setParameters", data.data);
+    },
+    setLoading(state, status) {
+      this.commit("setLoading", status);
     }
   },
   modules: {}
