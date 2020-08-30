@@ -15,7 +15,7 @@ class ContactController extends Controller
         $validate = validator::make($request->all(), [
             'name' => 'required|max:50',
             'email' => 'required|email',
-            'subject' => 'required|max:255',
+            'subject' => 'required|max:100',
             'message' => 'required'
         ]);
         if ($validate->fails()) {
@@ -27,7 +27,7 @@ class ContactController extends Controller
         if (!is_null($contact)) {
             if ($contact->next_message_time > Carbon::now()) {
                 return response([
-                    'data' => ['errors' => 'Try again in one minute later!']
+                    'data' => ['errors' => ['retry' =>'Try again in one minute later!']]
                 ]);
             }
         }
