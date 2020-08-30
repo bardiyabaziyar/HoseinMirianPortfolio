@@ -12,6 +12,50 @@
               <span>Contact Me</span>
               <h2>Contact Me</h2>
               <p>{{ description.about_description }}</p>
+              <div v-if="contact_response">
+                <b-alert
+                  v-if="contact_response.success"
+                  variant="success"
+                  v-text="' * ' + contact_response.success"
+                  show
+                  class="mb-1"
+                />
+                <b-alert
+                  v-if="contact_response.retry"
+                  variant="warning"
+                  v-text="' * ' + contact_response.retry"
+                  show
+                  class="mb-1"
+                />
+                <b-alert
+                  v-if="contact_response.name"
+                  variant="danger"
+                  v-text="' * ' + contact_response.name[0]"
+                  show
+                  class="mb-1"
+                />
+                <b-alert
+                  v-if="contact_response.subject"
+                  variant="danger"
+                  v-text="' * ' + contact_response.subject[0]"
+                  show
+                  class="mb-1"
+                />
+                <b-alert
+                  v-if="contact_response.email"
+                  variant="danger"
+                  v-text="' * ' + contact_response.email[0]"
+                  show
+                  class="mb-1"
+                />
+                <b-alert
+                  v-if="contact_response.message"
+                  variant="danger"
+                  v-text="' * ' + contact_response.message[0]"
+                  show
+                  class="mb-1"
+                />
+              </div>
             </div>
             <div class="row">
               <div class="col-lg-6">
@@ -55,59 +99,63 @@
               </div>
 
               <div class="col-lg-6">
-                <form role="form" class="php-email-form">
+                <form
+                  role="form"
+                  class="php-email-form"
+                  @submit.prevent="onSubmit"
+                >
                   <div class="form-row">
                     <div class="col-md-6 form-group">
                       <input
                         type="text"
                         name="name"
+                        v-model="contact.name"
                         class="form-control"
                         id="name"
                         placeholder="Your Name"
-                        data-rule="minlen:4"
-                        data-msg="Please enter at least 4 chars"
+                        v-text="contact.name"
                       />
-                      <div class="validate"></div>
                     </div>
                     <div class="col-md-6 form-group">
                       <input
                         type="email"
+                        v-model="contact.email"
                         class="form-control"
                         name="email"
                         id="email"
                         placeholder="Your Email"
                         data-rule="email"
                         data-msg="Please enter a valid email"
+                        v-text="contact.email"
                       />
-                      <div class="validate"></div>
                     </div>
                   </div>
                   <div class="form-group">
                     <input
+                      v-model="contact.subject"
                       type="text"
                       class="form-control"
                       name="subject"
                       id="subject"
                       placeholder="Subject"
                       data-rule="minlen:4"
-                      data-msg="Please enter at least 8 chars of subject"
+                      v-text="contact.subject"
                     />
-                    <div class="validate"></div>
                   </div>
                   <div class="form-group">
                     <textarea
+                      v-model="contact.message"
                       class="form-control"
                       name="message"
                       rows="6"
                       data-rule="required"
                       data-msg="Please write something for us"
                       placeholder="Message"
+                      v-text="contact.message"
                     ></textarea>
-                    <div class="validate"></div>
                   </div>
                   <div class="mb-3">
                     <div class="loading">Loading</div>
-                    <div class="error-message"></div>
                     <div class="sent-message">
                       Your message has been sent. Thank you!
                     </div>
@@ -146,7 +194,20 @@ export default {
     Gmail
   },
   computed: {
-    ...mapState(["about", "socials", "description", "loading"])
+    ...mapState([
+      "about",
+      "socials",
+      "description",
+      "loading",
+      "contact",
+      "contact_response"
+    ])
+  },
+  methods: {
+    async onSubmit() {
+      let _module = this;
+      await _module.$store.dispatch("addContact", _module.contact);
+    }
   },
   beforeDestroy() {
     this.scrollToTop();
