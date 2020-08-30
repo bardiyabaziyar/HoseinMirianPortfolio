@@ -30,6 +30,23 @@ class RESTClient {
     return response.data;
   }
 
+  async insertContact(name, subject, email, message) {
+    const body = {
+      name: name,
+      email: email,
+      subject: subject,
+      message: message
+    };
+    const request = {
+      method: "post",
+      data: body,
+      baseURL: this.baseURL + "contact",
+      headers: this.headers
+    };
+    let response = await this.executeQuery(request);
+    return response.data;
+  }
+
   /* EXTRA METHODS */
 
   /**
