@@ -40,9 +40,13 @@ const routes = [
     component: Contact
   },
   {
-    name: "*",
-    path: "*/*",
+    path: "*",
     redirect: "/"
+  },
+  {
+    /*This is a Laravel route*/
+    name: "login",
+    path: "/login"
   }
 ];
 
