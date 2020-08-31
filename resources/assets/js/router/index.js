@@ -40,9 +40,12 @@ const routes = [
     component: Contact
   },
   {
-    name: "*",
-    path: "*/*",
+    path: "*",
     redirect: "/"
+  },
+  {
+    name: "login",
+    path: "/login"
   }
 ];
 
