@@ -44,6 +44,7 @@ const routes = [
     redirect: "/"
   },
   {
+    /*This is a Laravel route*/
     name: "login",
     path: "/login"
   }
