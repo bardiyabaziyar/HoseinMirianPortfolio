@@ -9,10 +9,10 @@ class RESTClient {
     }
     RESTClient._instance = this;
 
-    this.apiLocal = "http://localhost:8000/api/";
-    // this.apiServer = "http://hoseinmirian.com/api/";
+    //this.apiLocal = "http://localhost:8000/api/";
+    this.apiServer = "http://hoseinmirian.com/api/";
 
-    this.baseURL = this.apiLocal;
+    this.baseURL = this.apiServer;
     this.headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
