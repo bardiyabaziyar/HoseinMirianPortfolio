@@ -25,6 +25,13 @@
 <script>
 export default {
   name: "Header",
+  watch: {
+    $route(to) {
+      //can include a from as parameter in route watcher
+      // console.log(from);
+      this.updateRoute(to.name);
+    }
+  },
   data: () => {
     return {
       buttons: [
