@@ -130,7 +130,6 @@ export default {
     },
     updateCard(tabTitle) {
       if (tabTitle.toLowerCase() !== "all") {
-        console.log(this.portfolio);
         this.currentPortfolio = this.portfolio.filter(
           item => item.type === tabTitle.toString().toLowerCase()
         );
