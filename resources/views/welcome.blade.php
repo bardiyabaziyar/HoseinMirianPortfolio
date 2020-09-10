@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="Hosein Mirian portfolio website">
+        <meta name="description" content="Hosein Mirian portfolio website. I am current University of Oxford Researcher / Front-End Developer. I am a Full-Stack developer with more than 12 years experience. ">
         <meta name="keywords" content="HTML, CSS, JavaScript, Vue, Vuex, front end">
         <meta name="author" content="Hossein Mirian">
         <meta name="csrf-token" content="{{ csrf_token() }}">
